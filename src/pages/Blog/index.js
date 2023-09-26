@@ -62,7 +62,7 @@ function Index({ data1, lang, initTopic, initDestination, initCategories, allCou
     })
   }
   const allBlogData = data?.posts?.nodes
-  // console.log(data)
+  // (data)
   const pageInfo = data?.posts?.pageInfo?.offsetPagination?.total
   const totalPage = Math.ceil(pageInfo / 2)
 

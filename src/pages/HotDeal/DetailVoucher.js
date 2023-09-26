@@ -40,7 +40,7 @@ const DetailVocher = ({ headerData = {}, data }) => {
 
   const onSubmit = (data) => {
     // Data sau khi nhập song
-    // console.log(data)
+    // (data)
   }
 
   return (
@@ -82,19 +82,30 @@ const DetailVocher = ({ headerData = {}, data }) => {
           </div>
         </div>
         <div>
-          <TimeDown headerData={headerData} data={data?.content?.expireDate} />
+          <TimeDown
+            headerData={headerData}
+            data={data?.content?.expireDate}
+          />
         </div>
       </div>
       <div className='w-full h-[0.0625vw] mt-[3vw] mb-[2.5vw] bg-[#171717] opacity-10 max-md:my-[6.4vw]'></div>
       <div className='flex gap-[3.31vw] max-md:flex-col'>
-        <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col'>
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className='flex flex-col'
+        >
           <h2 className='text-[2rem] font-bold leading-[2.6vw] mb-[2.2vw] max-md:mb-[5.33vw] max-md:text-[5.3vw] max-md:leading-normal'>
             {headerData?.form?.heading}
           </h2>
 
           <label className={labelStyle}>{headerData?.form?.name?.header}</label>
           <div className='relative '>
-            <input className={labelInputStyle} id='fullname' name='fullname' {...register('fullname')} />
+            <input
+              className={labelInputStyle}
+              id='fullname'
+              name='fullname'
+              {...register('fullname')}
+            />
             {!watch('fullname') && (
               <label className={placeholderStyle}>
                 {headerData?.form?.name?.placeholder} <span className='text-[#F04040]'>*</span>
@@ -105,7 +116,12 @@ const DetailVocher = ({ headerData = {}, data }) => {
 
           <label className={labelStyle}>{headerData?.form?.phone?.header}</label>
           <div className='relative '>
-            <input className={labelInputStyle} id='phone' name='phone' {...register('phone')} />
+            <input
+              className={labelInputStyle}
+              id='phone'
+              name='phone'
+              {...register('phone')}
+            />
             {!watch('phone')?.length && (
               <label className={placeholderStyle}>
                 {headerData?.form?.phone?.placeholder} <span className='text-[#F04040]'>*</span>
@@ -116,7 +132,12 @@ const DetailVocher = ({ headerData = {}, data }) => {
 
           <label className={labelStyle}>{headerData?.form?.email?.header}</label>
           <div className='relative '>
-            <input className={labelInputStyle} id='email' name='email' {...register('email')} />
+            <input
+              className={labelInputStyle}
+              id='email'
+              name='email'
+              {...register('email')}
+            />
             {!watch('email') && (
               <label className={placeholderStyle}>
                 {headerData?.form?.email?.placeholder} <span className='text-[#F04040]'>*</span>
@@ -143,7 +164,12 @@ const DetailVocher = ({ headerData = {}, data }) => {
 
           <label className={labelStyle}>{headerData?.form?.date?.header}</label>
           <div className='relative mb-[0.62vw] max-md:mb-[3.2vw]'>
-            <input className={labelInputStyle} id='date' name='date' {...register('date')} />
+            <input
+              className={labelInputStyle}
+              id='date'
+              name='date'
+              {...register('date')}
+            />
             {!watch('date') && <label className={placeholderStyle}>{headerData?.form?.date?.placeholder}</label>}
           </div>
 
@@ -155,7 +181,11 @@ const DetailVocher = ({ headerData = {}, data }) => {
             {headerData?.form?.button}
           </button>
         </form>
-        <Image src={detailVocherImg} alt='Detail voucher' className='w-[29.1875vw] h-[33.5vw] max-md:hidden' />
+        <Image
+          src={detailVocherImg}
+          alt='Detail voucher'
+          className='w-[29.1875vw] h-[33.5vw] max-md:hidden'
+        />
       </div>
     </div>
   )

@@ -13,7 +13,7 @@ function TravelStyle({ data, title, desc }) {
     const len = data?.length
     const quantityOnRow = Math.floor(len / 3)
     const residual = len % 3
-    // console.log(quantityOnRow)
+    // (quantityOnRow)
     const arrRow1 = []
     const arrRow2 = []
     const arrRow3 = []
@@ -47,17 +47,26 @@ function TravelStyle({ data, title, desc }) {
         <div className='flex gap-[2.5vw]'>
           <div className='col-1 flex flex-col gap-[2.5vw] mt-[4.56vw]'>
             {row1?.map((item, index) => (
-              <TravelStyleItem data={item} key={index}/>
+              <TravelStyleItem
+                data={item}
+                key={index}
+              />
             ))}
           </div>
           <div className='col-2 flex flex-col gap-[2.5vw] mt-[13.31vw]'>
             {row2?.map((item, index) => (
-              <TravelStyleItem data={item} key={index}/>
+              <TravelStyleItem
+                data={item}
+                key={index}
+              />
             ))}
           </div>
           <div className='col-3 flex flex-col gap-[2.5vw] mt-[-5vw]'>
             {row3?.map((item, index) => (
-              <TravelStyleItem data={item} key={index}/>
+              <TravelStyleItem
+                data={item}
+                key={index}
+              />
             ))}
           </div>
         </div>

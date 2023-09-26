@@ -100,7 +100,7 @@ function TourSlide({
   }
 
   const size = onlySmallScreen ? 12 : 8
-  // console.log(allTours)
+  // (allTours)
   totalPage.current = onlySmallScreen ? Math.ceil(allTours?.length / size) : Math.ceil(allTours?.length / size)
   const pagis = new Array(totalPage.current || 0).fill(0)
   return (

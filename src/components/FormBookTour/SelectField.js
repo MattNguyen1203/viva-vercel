@@ -5,7 +5,7 @@ function SelectField({ name, options }) {
   const { setFieldValue } = useFormikContext()
   const [field, meta] = useField(name)
 
-  // console.log(options)
+  // (options)
   const handleChange = (event) => {
     const { value } = event.target
     setFieldValue(name, value)
@@ -34,7 +34,10 @@ function SelectField({ name, options }) {
     >
       {options?.map((item, index) => {
         return (
-          <MenuItem key={index} value={item?.nation}>
+          <MenuItem
+            key={index}
+            value={item?.nation}
+          >
             {item?.nation}
           </MenuItem>
         )

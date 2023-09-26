@@ -8,7 +8,7 @@ import ExemptVisa from './ExemptVisa'
 import { createTheme, useMediaQuery } from '@mui/material'
 
 function Infomation({ data }) {
-  console.log(data)
+  data
   const dataInfo = data?.checkvisa?.infodetail
   const theme = createTheme({
     breakpoints: {

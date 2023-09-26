@@ -24,7 +24,7 @@ const Reviews = (props) => {
   const paginations = new Array(totalPage.current).fill(0)
 
   const reviewData = reviewList?.allCustomerReview?.nodes?.filter((item) => item.translation !== null)
-  // console.log(reviewData)
+  // (reviewData)
   return (
     <section className='content py-[10vw] relative z-10'>
       <div className='md:w-[33.4375vw] w-full text-textColor md:mb-[2vw] mb-[13.07vw]'>

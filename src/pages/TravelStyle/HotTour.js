@@ -5,7 +5,7 @@ import TourSlides from '@/components/Common/SlideTour'
 import Reason from './Reason'
 import Button from '@/components/Common/Button'
 function HotTour({ hotTour, reason }) {
-  console.log(hotTour)
+  hotTour
   return (
     <div className='w-[87.5%] ml-auto mr-auto max-md:w-full'>
       <div className='md:mt-[3.12vw] mt-[14.67vw]'>

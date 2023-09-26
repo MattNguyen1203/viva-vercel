@@ -88,7 +88,7 @@ function BookTour({ data, onClose }) {
           initialValues={{ ...INITAL_FORM_STATE }}
           validationSchema={FORM_VALIDATION}
           onSubmit={(values) => {
-            console.log(values)
+            values
           }}
         >
           {(formik) => {
