@@ -6,7 +6,7 @@ import Image from 'next/image'
 import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
 import Select from '@mui/material/Select'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import searchIcon from '@/assets/images/search-normal.svg'
 import Button from '@/components/Common/Button'
 function FilterPopup() {
@@ -15,9 +15,9 @@ function FilterPopup() {
   const [visible, setVisible] = useState(false)
   const [duration, SetDuration] = useState('')
 
-  const searchAnimation = document.getElementById('btn-search-animation')
-  const filterTourBlock = document.getElementById('filterTourBlock')
-  const filterPopUp = document.querySelector('.filterPopUp')
+  const searchAnimationRef = useRef()
+  const filterTourBlockRef = useRef()
+  const filterPopUpRef = useRef()
 
   const handleChangeDestination = (event) => {
     SetDestination(event.target.value)
@@ -29,38 +29,33 @@ function FilterPopup() {
     SetDuration(event.target.value)
   }
 
-  const handleShowPopUp = () => {
-    searchAnimation.addEventListener('click', (e) => {
-      e.stopPropagation()
-      filterPopUp.classList.toggle('active')
-    })
+  const handleShowPopUp = (e) => {
+    e.stopPropagation()
+    filterPopUpRef.current.classList.toggle('active')
   }
 
   useEffect(() => {
     const handleScroll = () => {
-      const searchAnimation = document.getElementById('btn-search-animation')
-      const filterTourBlock = document.getElementById('filterTourBlock')
       const scrollTop = window.scrollY
-
       if (scrollTop >= 560 && !visible) {
-        if (filterTourBlock) {
+        if (filterTourBlockRef.current) {
           setVisible(true)
-          searchAnimation.style.transform = 'translateX(0)'
+          searchAnimationRef.current.style.transform = 'translateX(0)'
           setTimeout(() => {
-            filterTourBlock.style.transform = 'translateX(0)'
-            filterTourBlock.style.visibility = 'visible'
-            filterTourBlock.style.opacity = '1'
+            filterTourBlockRef.current.style.transform = 'translateX(0)'
+            filterTourBlockRef.current.style.visibility = 'visible'
+            filterTourBlockRef.current.style.opacity = '1'
 
             setTimeout(() => {
-              filterTourBlock.style.transform = 'translateX(20%)'
-              filterTourBlock.style.visibility = 'hidden'
-              filterTourBlock.style.opacity = '0'
+              filterTourBlockRef.current.style.transform = 'translateX(20%)'
+              filterTourBlockRef.current.style.visibility = 'hidden'
+              filterTourBlockRef.current.style.opacity = '0'
             }, 1500)
           }, 1000)
         }
       } else if (scrollTop == 0) {
         setVisible(false)
-        searchAnimation.style.transform = 'translateX(300%)'
+        searchAnimationRef.current.style.transform = 'translateX(300%)'
       }
     }
     window.addEventListener('scroll', handleScroll)
@@ -75,6 +70,7 @@ function FilterPopup() {
         <div
           onClick={handleShowPopUp}
           id='btn-search-animation'
+          ref={searchAnimationRef}
           className=' w-[4.5vw] h-[4.5vw] rounded-[50%] absolute right-[3.31vw] bg-[#FFD220] flex justify-center items-center flex-shrink-0'
         >
           <svg
@@ -103,6 +99,7 @@ function FilterPopup() {
 
         <div
           id='filterTourBlock'
+          ref={filterTourBlockRef}
           className='py-[0.75vw] absolute  right-[5vw] h-fit px-[1.19vw] bg-[#FFD220] inline-flex justify-center items-center gap-[0.625vw] rounded-tl-[3.0625vw] rounded-bl-[3.0625vw] '
         >
           <span className='text-[1vw] text-[#171717] font-normal leading-[130%]'>Filter tour</span>
@@ -110,7 +107,10 @@ function FilterPopup() {
         </div>
       </div>
 
-      <div className='fixed filterPopUp rounded-[1vw] shadow-lg bottom-[10vw] right-[8vw] z-[1000] bg-white w-[28.5625vw] h-[15vw] grid grid-cols-2 grid-rows-2 gap-y-[2.25vw] gap-x-[4.14vw] pt-[2.5vw] pr-[2.125vw] pb-[2.8125vw] pl-[2.1875vw]'>
+      <div
+        className='fixed filterPopUp rounded-[1vw] shadow-lg bottom-[10vw] right-[8vw] z-[1000] bg-white w-[28.5625vw] h-[15vw] grid grid-cols-2 grid-rows-2 gap-y-[2.25vw] gap-x-[4.14vw] pt-[2.5vw] pr-[2.125vw] pb-[2.8125vw] pl-[2.1875vw]'
+        ref={filterPopUpRef}
+      >
         <div className='flex flex-col select  flex-shrink-0 md:w-full max-md:bg-white '>
           <span className='text-[#9B9B9B] uppercase text-[0.875vw] md:block hidden'>Destination</span>
           <div className='flex items-center select-mobile'>
