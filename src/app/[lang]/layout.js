@@ -79,8 +79,8 @@ export default async function RootLayout({ children, params }) {
   const rvRes = await getAboutUsData(GET_DATA_MENU_RV, params.lang)
 
   return (
-    <ApolloClientProvider>
-      <html lang={params.lang}>
+    <html lang={params.lang}>
+      <ApolloClientProvider>
         <ThemeRegistry>
           <body suppressHydrationWarning={true}>
             <Navbar
@@ -102,7 +102,7 @@ export default async function RootLayout({ children, params }) {
           </body>
           <Footer lang={params.lang} />
         </ThemeRegistry>
-      </html>
-    </ApolloClientProvider>
+      </ApolloClientProvider>
+    </html>
   )
 }
